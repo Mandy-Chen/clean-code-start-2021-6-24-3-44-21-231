@@ -23,8 +23,10 @@ public class OrderReceipt {
         receiptContext.append(RECEIPT_HEADER);
         receiptContext.append(order.getCustomerName());
         receiptContext.append(order.getCustomerAddress());
+
         double totalSalesTax = 0d;
         double total = 0d;
+
         for (LineItem lineItem : order.getLineItems()) {
             receiptContext.append(lineItem.generateReceiptContext());
             totalSalesTax += lineItem.getSalesTax();
