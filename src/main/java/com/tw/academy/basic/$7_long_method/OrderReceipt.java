@@ -9,36 +9,40 @@ package com.tw.academy.basic.$7_long_method;
  */
 public class OrderReceipt {
     private Order order;
+    final char TAB = '\t';
+    final char LINE_BREAK = '\n';
+    final double TAX_RATE = .10;
+    final String RECEIPT_HEADER = "======Printing Orders======\n";
+    final String salesTax = "Sales Tax";
+    final String totalAmount = "Total Amount";
 
     public OrderReceipt(Order order) {
         this.order = order;
     }
 
-
     public String printReceipt() {
         StringBuilder output = new StringBuilder();
-        output.append("======Printing Orders======\n");
+        output.append(RECEIPT_HEADER);
         output.append(order.getCustomerName());
         output.append(order.getCustomerAddress());
         double totalSalesTax = 0d;
         double total = 0d;
         for (LineItem lineItem : order.getLineItems()) {
             output.append(lineItem.getDescription());
-            output.append('\t');
+            output.append(TAB);
             output.append(lineItem.getPrice());
-            output.append('\t');
+            output.append(TAB);
             output.append(lineItem.getQuantity());
-            output.append('\t');
+            output.append(TAB);
             output.append(lineItem.totalAmount());
-            output.append('\n');
-            double salesTax = lineItem.totalAmount() * .10;
+            output.append(LINE_BREAK);
+            double salesTax = lineItem.totalAmount() * TAX_RATE;
             totalSalesTax += salesTax;
             total += lineItem.totalAmount() + salesTax;
         }
 
-        output.append("Sales Tax").append('\t').append(totalSalesTax);
-
-        output.append("Total Amount").append('\t').append(total);
+        output.append(salesTax).append(TAB).append(totalSalesTax);
+        output.append(totalAmount).append(TAB).append(total);
         return output.toString();
     }
 }
