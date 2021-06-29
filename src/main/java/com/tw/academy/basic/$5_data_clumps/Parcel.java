@@ -4,9 +4,10 @@ public class Parcel {
     private String size;
     private Double weight;
 
-    private String receiverName;
-    private String receiverPhoneNumber;
-    private String receiverAddress;
+
+    private final String receiverName;
+    private final String receiverPhoneNumber;
+    private final String receiverAddress;
 
     private String senderName;
     private String senderPhoneNumber;
