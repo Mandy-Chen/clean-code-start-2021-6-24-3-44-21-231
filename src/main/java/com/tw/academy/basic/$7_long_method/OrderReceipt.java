@@ -14,25 +14,12 @@ public class OrderReceipt {
         this.order = order;
     }
 
-    //Deprecated
-    public String printCustomerName() {
-        return order.getCustomerName();
-    }
 
-    //todo: rename -- Tom
     public String printReceipt() {
         StringBuilder output = new StringBuilder();
-
-        // print headers
         output.append("======Printing Orders======\n");
-
-        // print date, bill no, customer name
-//        output.append("Date - " + order.getDate();
         output.append(order.getCustomerName());
         output.append(order.getCustomerAddress());
-//        output.append(order.getCustomerLoyaltyNumber());
-
-        // prints lineItems
         double totalSalesTax = 0d;
         double total = 0d;
         for (LineItem lineItem : order.getLineItems()) {
@@ -44,19 +31,13 @@ public class OrderReceipt {
             output.append('\t');
             output.append(lineItem.totalAmount());
             output.append('\n');
-
-            // calculate sales tax @ rate of 10%
             double salesTax = lineItem.totalAmount() * .10;
             totalSalesTax += salesTax;
-
-            // calculate total amount of lineItem = price * quantity + 10 % sales tax
             total += lineItem.totalAmount() + salesTax;
         }
 
-        // prints the state tax
         output.append("Sales Tax").append('\t').append(totalSalesTax);
 
-        // print total amount
         output.append("Total Amount").append('\t').append(total);
         return output.toString();
     }
