@@ -11,3 +11,5 @@
 * "======Printing Orders======\n" -> RECEIPT_HEADER
 * "Sales Tax" -> salesTax
 * "Total Amount" -> totalAmount
+### 4.data_clumps
+* Refine customerName and address into class Customer
