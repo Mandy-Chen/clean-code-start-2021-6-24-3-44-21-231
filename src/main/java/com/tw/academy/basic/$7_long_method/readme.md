@@ -13,3 +13,7 @@
 * "Total Amount" -> totalAmount
 ### 4.data_clumps
 * Refine customerName and address into class Customer
+### 5.extract method and move to LineItem
+* generateReceiptContext()
+* getSalesTax()
+* getTotalCost()

@@ -5,6 +5,9 @@ public class LineItem {
 	private double price;
 	private int quantity;
 
+	final char TAB = '\t';
+	final char LINE_BREAK = '\n';
+
 	public LineItem(String description, double price, int quantity) {
 		super();
 		this.description = description;
@@ -12,19 +15,27 @@ public class LineItem {
 		this.quantity = quantity;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
 	public double getPrice() {
 		return price;
-	}
-
-	public int getQuantity() {
-		return quantity;
 	}
 
     double totalAmount() {
         return price * quantity;
     }
+
+	public String generateReceiptContext() {
+
+		return this.description + TAB
+				+ this.price + TAB
+				+ this.quantity + TAB
+				+ this.totalAmount() + LINE_BREAK;
+	}
+	public double getSalesTax() {
+		final double TAX_RATE = 0.10;
+		return this.totalAmount() * TAX_RATE;
+	}
+
+	public double getTotalCost() {
+		return this.totalAmount() + this.getSalesTax();
+	}
 }
