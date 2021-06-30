@@ -3,6 +3,7 @@
 * rename o to order
 * rename totSalesTx to totalSalesTax
 * rename tot to total
+* rename total to totalAmount
 ### 2.Remove useless and commented code
 ### 3.Extract static variables
 * '\t' -> TAB

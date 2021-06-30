@@ -23,16 +23,16 @@ public class OrderReceipt {
         getReceiptHeader(receiptContext);
 
         double totalSalesTax = 0d;
-        double total = 0d;
+        double totalAmount = 0d;
 
         for (LineItem lineItem : order.getLineItems()) {
             receiptContext.append(lineItem.generateReceiptContext());
             totalSalesTax += lineItem.getSalesTax();
-            total += lineItem.getTotalCost();
+            totalAmount += lineItem.getTotalCost();
         }
 
         receiptContext.append(salesTax).append(TAB).append(totalSalesTax);
-        receiptContext.append(totalAmount).append(TAB).append(total);
+        receiptContext.append(totalAmount).append(TAB).append(totalAmount);
         return receiptContext.toString();
     }
 
