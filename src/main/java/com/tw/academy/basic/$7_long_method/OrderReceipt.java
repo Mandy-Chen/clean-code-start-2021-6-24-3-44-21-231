@@ -20,9 +20,7 @@ public class OrderReceipt {
 
     public String printReceipt() {
         StringBuilder receiptContext = new StringBuilder();
-        receiptContext.append(RECEIPT_HEADER);
-        receiptContext.append(order.getCustomerName());
-        receiptContext.append(order.getCustomerAddress());
+        getReceiptHeader(receiptContext);
 
         double totalSalesTax = 0d;
         double total = 0d;
@@ -36,6 +34,12 @@ public class OrderReceipt {
         receiptContext.append(salesTax).append(TAB).append(totalSalesTax);
         receiptContext.append(totalAmount).append(TAB).append(total);
         return receiptContext.toString();
+    }
+
+    private void getReceiptHeader(StringBuilder receiptContext) {
+        receiptContext.append(RECEIPT_HEADER);
+        receiptContext.append(order.getCustomerName());
+        receiptContext.append(order.getCustomerAddress());
     }
 
 }

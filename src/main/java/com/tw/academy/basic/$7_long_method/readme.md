@@ -17,3 +17,4 @@
 * generateReceiptContext()
 * getSalesTax()
 * getTotalCost()
+* getReceiptHeader()
